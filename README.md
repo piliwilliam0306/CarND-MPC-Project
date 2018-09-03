@@ -1,5 +1,25 @@
 # CarND-Controls-MPC
 Self-Driving Car Engineer Nanodegree Program
+---
+## The model
+
+The model includes car's x and y coodinates, orientation (psi), velocity, cross-track error, and psi error.
+Actuators such as δ and a are the outputs to drive the car. δ is the steering angle which should be in range [-25,25] deg. 
+a is the throttle and brake which should be in range [-1, 1] to accelerate and deaccelerate the car.
+
+![](https://github.com/piliwilliam0306/CarND-MPC-Project/blob/master/mpc.png)
+
+## Timestep Length and Elapsed Duration (N & dt)
+
+After some trial and error, I chose N = 10 and dt = 0.1 for the MPC because the prediction horizon (T = N * dt) does not need to exceed 1 second; since the environment may change, predicting further is not necessarily helpful.
+
+## Polynomial Fitting and MPC Preprocessing
+
+3rd order polynomial was used to fit the reference trajectory as it is a good approximation for the udacity simulator.
+
+## Model Predictive Control with Latency
+
+The 100ms latency was introduced to simulate delay of physical actuators in a self driving car, which helps to increase stability of the controller. 
 
 ---
 
